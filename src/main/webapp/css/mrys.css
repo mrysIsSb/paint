@@ -1,0 +1,174 @@
+*{
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}
+div{
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+
+}
+span{
+	font-size: 14px; 
+	margin: 3px"
+}
+
+.transparent0{
+	background: rgba(255,255,255,0);
+}
+.transparent1{
+	background: rgba(255,255,255,0.1);
+}
+.transparent2{
+	background: rgba(255,255,255,0.2);
+}
+.transparent3{
+	background: rgba(255,255,255,0.3);
+}
+.transparent4{
+	background: rgba(255,255,255,0.4);
+}
+.transparent5{
+	background: rgba(255,255,255,0.5);
+}
+.transparent6{
+	background: rgba(255,255,255,0.6);
+}
+.transparent7{
+	background: rgba(255,255,255,0.7);
+}
+.transparent8{
+	background: rgba(255,255,255,0.8);
+}
+.transparent9{
+	background: rgba(255,255,255,0.9);
+}
+.transparent10{
+	background: rgba(255,255,255,1);
+}
+.height100{
+	height:100%;
+}
+.width100{
+	width: 100%;
+}
+.w100ha{
+	height:auto;
+	width: 100%;
+}
+.wah100{
+	width: auto;
+	height: 100%;
+}
+.wh100{
+	height:100%;
+	width: 100%;
+}
+.whauto{
+	width: auto;
+	height: auto;
+}
+.o{
+	margin: 0px; 
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 0px; 
+	border: 0px; 
+}
+/*瀹氫箟婊氬姩鏉￠珮瀹藉強鑳屾櫙 楂樺鍒嗗埆瀵瑰簲妯珫婊氬姩鏉＄殑灏哄*/  
+::-webkit-scrollbar  
+{  
+    width: 5px;  
+    height: 5px;  
+    background-color: #F5F5F5;  
+}  
+
+/*瀹氫箟婊氬姩鏉¤建閬� 鍐呴槾褰�+鍦嗚*/  
+::-webkit-scrollbar-track  
+{  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  
+    border-radius: 5px;  
+    background-color: #F5F5F5;  
+}  
+  
+/*瀹氫箟婊戝潡 鍐呴槾褰�+鍦嗚*/  
+::-webkit-scrollbar-thumb  
+{  
+    border-radius: 5px;  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
+    background-color: #555;  
+}
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    background-image : linear-gradient(rgb(255, 255, 255) 0%, rgb(255, 255, 255) 0%);;
+}
+.btn-default:hover, .btn-default:focus {
+    background-color: #eee;
+    background-position: 0 -100px;
+}
+td  
+{  
+    text-align:center;  
+    text-valign:center;
+} 
+.loading{  
+    width:160px;  
+    height:56px;  
+    position: absolute;  
+    top:50%;  
+    left:50%;  
+    line-height:56px;  
+    color:#fff;  
+    padding-left:60px;  
+    font-size:15px;  
+    background: #000 url(../images/loader.gif) no-repeat 10px 50%;  
+    opacity: 0.7;  
+    z-index:9999;  
+    -moz-border-radius:20px;  
+    -webkit-border-radius:20px;  
+    border-radius:20px;  
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);  
+}  
+
+/*滚动条*/
+@media print {
+	.print {
+		display: block;
+	}
+	.nprint {
+		display: none;
+	}
+}
+
+@media ( min-width : 768px) {
+	.container {
+		width: 95%;
+	}
+}
+
+@media ( min-width : 992px) {
+	.container {
+		width: 95%;
+	}
+}
+
+@media ( min-width : 1200px) {
+	.container {
+		width: 95%;
+	}
+}
+
+
+.divcenter{
+	float: none;  
+    display: block;  
+    margin-left: auto;  
+    margin-right: auto;}
+    
+.floatleft{
+	float:left;
+}    

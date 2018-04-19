@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	default-autowire="byName"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+	<!-- 启动注解驱动的spring mvc功能，注册请求url和注解pojo类方法的映射 -->
+	<mvc:annotation-driven />
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<!-- 启动包扫描功能，以便注册带有@Controller,@Service,@repository,@Component等注解的类成为spring的bean -->
+	<context:component-scan base-package="com.mrysissb.paint.controller" >
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	<mvc:resources mapping="/images/**" location="/images/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/cab/**" location="/cab/" />
+	<mvc:resources mapping="/bootstrap-3.3.7-dist/**"
+		location="/bootstrap-3.3.7-dist/" />
+	<mvc:resources mapping="/htm/**" location="/htm/" />
+	<mvc:resources mapping="/assets/**" location="/assets/" />
+	<mvc:resources mapping="/ddouble-bsie/**" location="/ddouble-bsie/" />
+	<mvc:resources mapping="/client/**" location="/client/" />
+	<mvc:resources mapping="/**" location="/" />
+	<mvc:view-controller path="/"
+		view-name="redirect:/maincontroller/home" /><!--设置开始页面 -->
+	<mvc:annotation-driven
+		content-negotiation-manager="contentNegotiationManager" />
+	<bean id="contentNegotiationManager"
+		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"
+		p:defaultContentType="application/json" p:favorPathExtension="false"
+		p:favorParameter="false" p:ignoreAcceptHeader="false" p:useJaf="false">
+
+		<property name="mediaTypes">
+			<value>
+				atom=application/atom+xml
+				html=text/html
+				json=application/json
+				*=*/*
+			</value>
+		</property>
+	</bean>
+	
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 进行拦截  /** 表示所有 -->
+			<mvc:mapping path="/maincontroller/**"/>
+			<mvc:mapping path="/paintcontroller/**"/>
+			<mvc:mapping path="/usercontroller/**"/>
+			<!-- 不进行拦截 -->
+			<mvc:exclude-mapping path=""/>
+			<bean class="com.mrysissb.paint.interceptor.UserDoInerceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
+
+	<!-- 这个类用于Spring MVC视图解析 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/" p:suffix=".jsp" />
+</beans>

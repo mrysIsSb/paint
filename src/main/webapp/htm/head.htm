@@ -1,0 +1,121 @@
+<%@page pageEncoding="UTF-8"%>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge,chrome=1 text/html; charset=UTF-8">
+<style type="text/css">
+.modal-content {
+	margin-left: -200px;
+	left: 50%;
+	width: 400px;
+}
+</style>
+</head>
+<body>
+
+	<div style="width: 100%;">
+		<nav class="navbar navbar-default" role="navigation" style="margin-bottom:0px;">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#example-navbar-collapse">
+					<span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" style="color:#FF6138;" onmouseover="this.style.cssText='color:#BEEB9F;'" onmouseout="this.style.cssText='color:#FF6138;'" href="<%=path%>/maincontroller/home">Mrysissb</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="example-navbar-collapse" style="background-image: url('<%=path%>/images/bj1.jpg')">
+				<ul class="nav navbar-nav">
+					<li id="paint_li"><a style="color:#FF6138;" onmouseover="this.style.cssText='color:#BEEB9F;'" onmouseout="this.style.cssText='color:#FF6138;'" href="<%=path%>/maincontroller/gotopaint">画画</a></li>
+					<li><a style="color:#FF6138;" onmouseover="this.style.cssText='color:#BEEB9F;'" onmouseout="this.style.cssText='color:#FF6138;'" href="#">软件下载</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" >
+					<li class="dropdown"><a style="color:#FF6138;" onmouseover="this.style.cssText='color:#BEEB9F;'" onmouseout="this.style.cssText='color:#FF6138;'" href="#" class="dropdown-toggle"
+						data-toggle="dropdown" id="user"></a>
+						<ul class="dropdown-menu">
+							<li><a style="color:#FF6138;" onmouseover="this.style.cssText='color:#BEEB9F;'" onmouseout="this.style.cssText='color:#FF6138;'" id="login_btn" href="#login_div" role="button"
+								data-toggle="modal" onclick="change(1);">登录</a></li>
+							<li><a style="color:#FF6138;" onmouseover="this.style.cssText='color:#BEEB9F;'" onmouseout="this.style.cssText='color:#FF6138;'" href="#">个人设置</a></li>
+							<li class="divider" style="background-color:#FF6138"></li>
+							<li><a style="color:#FF6138;" onmouseover="this.style.cssText='color:#BEEB9F;'" onmouseout="this.style.cssText='color:#FF6138;'" id="register_btn" href="<%=path%>/maincontroller/gotoregister">注册</a></li>
+							<li><a style="color:#FF6138;" onmouseover="this.style.cssText='color:#BEEB9F;'" onmouseout="this.style.cssText='color:#FF6138;'" onclick="logout();">登出</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<div class="modal fade" id="login_div" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">标题</h4>
+				</div>
+				<div class="modal-body" id="modal-body"></div>
+				<div class="modal-footer" id="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	
+	$(function(){
+		if(sessionStorage.user!=null&&sessionStorage.user!=''){
+			$('#user').html(JSON.parse(sessionStorage.user).nickname + '<strong class="caret"></strong>');
+		}else{
+			$('#user').html('游客<strong class="caret"></strong>');
+		}
+	});
+	
+	function change(id) {
+		if (id == 1) {
+			$('#myModalLabel').html('登录');
+			$('#modal-body')
+					.html(
+							'<input id="username" type="text" class="form-control" autocomplete="on" placeholder="账号">'
+									+ '<label></label>'
+									+ '<input id="password" type="password" class="form-control" placeholder="密码">');
+			$('#modal-footer')
+					.html(
+							'<a id="box"></a><button id="login" type="button" class="btn btn-default" onclick="login();">登录</button>');
+			$('#login_div').on('shown.bs.modal', function () {
+				$('#username').focus();
+			})
+			var onclick=false;
+			$('#login_div').bind('keyup', function(event) {
+				if (!onclick&&event.keyCode == "13") {
+					onclick=true;
+					$('#login').click();
+				}
+			});
+		}
+		
+		
+	}
+	function login() {
+		$.ajax({
+			type : 'POST',
+			url : '<%=path%>/maincontroller/login',
+			data : {
+				"username" : $("#username").val(),
+				"password" : $("#password").val()
+			},
+			ContentType : 'application/x-www-form-urlencoded',
+			success : function(data) {
+				console.log(data);
+				var userinfo=JSON.parse(data.content);
+				$.cookie('userid',userinfo.userid,{path:'/'});
+				sessionStorage.user=data.content;
+				$('#user').html(userinfo.nickname + '<strong class="caret"></strong>');
+				$('#login_div').modal('hide')
+			},
+		})
+	}
+	function logout(){
+		$.cookie('userid',null,{path:'/'});
+		sessionStorage.user="";
+		$('#user').html('游客<strong class="caret"></strong>');
+	}
+</script>

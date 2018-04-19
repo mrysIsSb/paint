@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"  
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"  
+    id="WebApp_ID" version="3.1">  
+    <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<!-- 应用上下文配置文件 -->
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	<!-- 配置spring注册配置文件读取器，监听spring配置文件的变化 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter
+		</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+	<filter>
+		<filter-name>UrlFilter</filter-name>
+		<filter-class>com.mrysissb.filter.UrlFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UrlFilter</filter-name>
+		<!-- <url-pattern>/*</url-pattern> -->
+		<url-pattern>/maincontroller/*</url-pattern>
+		<url-pattern>/usercontroller/*</url-pattern>
+		<url-pattern>/paintcontroller/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>UserFilter</filter-name>
+		<filter-class>com.mrysissb.paint.filter.UserFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UserFilter</filter-name>
+		<!-- <url-pattern>/*</url-pattern> -->
+		<url-pattern>/usercontroller/*</url-pattern>
+		<url-pattern>/paintcontroller/*</url-pattern>
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup><!-- tomcat启动后立即加载 -->
+	</servlet>
+	<!-- url-pattern配置为/，不带文件后缀，会造成其它静态文件(js，css等)不能访问。如配为*.do，则不影响静态文件的访问 -->
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/404.jsp</location>
+	</error-page>
+	
+    <display-name>paint</display-name>  
+</web-app> 

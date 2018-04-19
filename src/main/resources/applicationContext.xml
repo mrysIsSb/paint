@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+	<!-- 读取数据库的连接信息 -->	
+	<context:component-scan base-package="com.mrysissb.paint" use-default-filters="true">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	<util:properties id="db" location="classpath:db.properties" />
+	<!-- 配置DataSource -->
+	<bean id="dataSourceOne" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="#{db.mysql_driver}"></property>
+		<property name="url" value="#{db.mysql_url}"></property>
+		<property name="username" value="#{db.mysql_username}"></property>
+		<property name="password" value="#{db.mysql_password}"></property>
+		<!-- 最大连接数量 -->
+		<property name="maxActive" value="150" />
+		<!-- 最小空闲连接 -->
+		<property name="minIdle" value="5" />
+		<!-- 最大空闲连接 -->
+		<property name="maxIdle" value="20" />
+		<!-- 初始化连接数量 -->
+		<property name="initialSize" value="30" />
+		<!-- 连接被泄露时是否打印 -->
+		<property name="logAbandoned" value="true" />
+		<!-- 是否自动回收超时连接 -->
+		<property name="removeAbandoned" value="true" />
+		<!-- 超时等待时间(以秒为单位) -->
+		<property name="removeAbandonedTimeout" value="10" />
+	</bean>
+	<bean id="mysql" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSourceOne" />
+	</bean>
+	<!-- 配置事物管理器    使用在对应的方法上加@Transactional(value=mysqltransactionManager)-->
+	 	<bean id="mysqltransactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSourceOne" />
+	</bean>
+	<!-- 启动事物管理器 -->
+	<tx:annotation-driven transaction-manager="mysqltransactionManager"/>
+	
+	
+	<import resource="spring-httpclient.xml"/>
+</beans>

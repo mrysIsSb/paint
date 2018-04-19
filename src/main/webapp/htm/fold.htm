@@ -1,0 +1,297 @@
+<%@page pageEncoding="UTF-8"%>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1 text/html; charset=UTF-8">
+<style type="text/css">
+* {
+	margin: 0px;
+}
+
+a:HOVER {
+	text-decoration: none;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.panel {
+	background: rgba(255, 255, 255, 0);
+}
+
+.panel-head {
+	padding: 8px 15px;
+	color: #333;
+	background-color: #000;
+}
+
+div.panel-head:HOVER {
+	background-color: #fff;
+}
+
+div.panel-head:HOVER a {
+	color: #000;
+}
+
+.panel-head a {
+	color: #fff;
+}
+
+ul {
+	background: rgba(255, 255, 255, 0);
+}
+
+li {
+	padding: 6px 25px;
+	list-style: none;
+	background: rgba(255, 255, 255, 0);
+	cursor: pointer;
+}
+
+.panel-body1 {
+	padding: 0xp;
+}
+
+li a {
+	
+}
+
+.panel-group {
+	
+}
+
+li:HOVER {
+	background-color: #fff;
+}
+span{
+	font-size: 12px;
+}
+a{
+	font-family:'Hiragino Sans GB','Microsoft Yahei',"WenQuanYi Micro Hei",SimSun,Tahoma,Arial,Helvetica,STHeiti;
+	font-size:12px;
+}
+</style>
+</head>
+<body>
+	<div  class="panel-group transparent0 o" id="accordion"
+		style="height: 100%;">
+		<div class="panel o" style="margin: 0px; border-radius: 0px;">
+			<div class="panel-head pointer" data-toggle="collapse"
+				data-target="#collapseOne" data-parent="#accordion">
+				<a> 储值卡 </a> <a style="float: right; font-size: 10px;"> <span
+					class="glyphicon glyphicon-minus"></span>
+				</a>
+			</div>
+			<div id="collapseOne" class="panel-collapse collapse in transparent0">
+				<div class="panel-body1 transparent0">
+					<ul class="transparent0" style="margin: 0px;">
+						<!-- <li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotocardno')"><a>查询</a>
+							<a id="xiangyou" style="float: right;"><span
+								class="glyphicon glyphicon-chevron-right"></span></a></li>
+						<li><a>注销</a></li>
+						<li><a>换卡记录</a></li> -->
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotoupdatemembercard')"><a>换卡</a>
+							<a id="xiangyou" style="float: right;"><span
+								class="glyphicon glyphicon-chevron-right"></span></a></li>
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotofindmembercard')"><a>操作记录</a></li>
+						<!-- <li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotouploadmember')"><a>上传会员充值记录</a></li> -->
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotoreconciliationmembercard')"><a>换卡对账</a></li>
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotofindshopfreeinfo')"><a>门店换卡情况查询</a></li>
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotofindshopfreeinfo2')"><a>门店换卡情况汇总</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 
+		<div class="panel o" style="margin: 0px; border-radius: 0px;">
+			<div class="panel-head pointer" data-toggle="collapse"
+				data-target="#collapseTwo" data-parent="#accordion">
+				<a> 美团券 </a> <a style="float: right; font-size: 10px;"> <span
+					class="glyphicon glyphicon-plus"></span>
+				</a>
+			</div>
+			<div id="collapseTwo" class="panel-collapse collapse transparent0">
+				<div class="panel-body1">
+					<ul style="margin: 0px;">
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotomtqyz')"><a>查询</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		 -->
+	<!-- 	<div class="panel o" style="margin: 0px; border-radius: 0px;">
+			<div class="panel-head pointer" data-toggle="collapse"
+				data-target="#collapseThree" data-parent="#accordion">
+				<a> 固定资产 </a> <a style="float: right; font-size: 10px;"> <span
+					class="glyphicon glyphicon-plus"></span>
+				</a>
+			</div>
+			<div id="collapseThree" class="panel-collapse collapse transparent0">
+				<div class="panel-body1">
+					<ul style="margin: 0px;">
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotoupload')"><a>导入excel文件</a></li>
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotoqueryfixed')"><a>查询</a></li>
+							<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotoaddfixed')"><a>添加</a></li>
+						<!-- 	<li href="javascript:void(0);"
+							onClick="openurl('http://s.saofu.cn/pay-web-shop/trade_order/trade_list')"><a>添加</a></li> --
+					</ul>
+				</div>
+			</div>
+		</div> -->
+		<div class="panel o" style="margin: 0px; border-radius: 0px;">
+			<div class="panel-head pointer" data-toggle="collapse"
+				data-target="#collapseFour" data-parent="#accordion">
+				<a> 对账 </a> <a style="float: right; font-size: 10px;"> <span
+					class="glyphicon glyphicon-plus"></span>
+				</a>
+			</div>
+			<div id="collapseFour" class="panel-collapse collapse transparent0">
+				<div class="panel-body1">
+					<ul style="margin: 0px;">
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotoreconciliation2')"><a>掌贝对账</a>
+							</li>
+							<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotouploadzbcsv')"><a>掌贝账单导入</a>
+							</li>
+							<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotoupdateWeix')"><a>微信账单处理</a>
+							</li>
+							<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotoweixReconciliation')"><a>微信账单对账</a>
+							</li>
+							<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotocardshow')"><a>卡券核销</a>
+							</li>
+							<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotouploadcard')"><a>卡券数据上传</a>
+							</li>
+							<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotoaddshopContact')"><a>新增门店关联</a>
+							</li>
+							<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotoshopContact')"><a>门店关联</a>
+							</li>
+							<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotoaddpayContact')"><a>新增支付方式关联</a>
+							</li>
+							<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotopayContact')"><a>支付方式关联</a>
+							</li> 
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="panel o" style="margin: 0px; border-radius: 0px;">
+			<div class="panel-head pointer" data-toggle="collapse"
+				data-target="#collapseFive" data-parent="#accordion">
+				<a> 系统管理 </a> <a style="float: right; font-size: 10px;"> <span
+					class="glyphicon glyphicon-plus"></span>
+				</a>
+			</div>
+			<div id="collapseFive" class="panel-collapse collapse transparent0">
+				<div class="panel-body1">
+					<ul style="margin: 0px;">
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/systemcontroller/usermanage')"><a>用户管理</a>
+						</li>
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/systemcontroller/jvmmemory')"><a>jvm管理</a>
+						</li>
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/systemcontroller/dbmanage')"><a>数据库管理</a>
+						</li>
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/systemcontroller/filemanage')"><a>文件管理</a>
+						</li>
+						<!-- <li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/systemcontroller/test1')"><a>test</a>
+						</li> -->
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/systemcontroller/datadown')"><a>数据下载</a>
+						</li>
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/systemcontroller/systemcontrol')"><a>系统控制</a>
+						</li>
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/systemcontroller/downClient')"><a>客户端下载</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 
+		<div class="panel o" style="margin: 0px; border-radius: 0px;">
+			<div class="panel-head pointer" data-toggle="collapse"
+				data-target="#collapseFive" data-parent="#accordion">
+				<a> 微信 </a> <a style="float: right; font-size: 10px;"> <span
+					class="glyphicon glyphicon-plus"></span>
+				</a>
+			</div>
+			<div id="collapseFive" class="panel-collapse collapse transparent0">
+				<div class="panel-body1">
+					<ul style="margin: 0px;">
+						<li href="javascript:void(0);"
+							onClick="openurl('<%=path%>/cardcontroller/gotowxtest')"><a>测试</a>
+							</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		 -->
+	</div>
+</body>
+<script type="text/javascript">
+	$("div.panel-head").bind("click", function() {
+		var class1 = $(this).find('span').attr('class');
+		var minus = "glyphicon glyphicon-minus";
+		var plus = "glyphicon glyphicon-plus";
+		changeDiv(plus);
+		if (class1 == minus) {
+			$(this).find('span').removeClass();
+			$(this).find('span').addClass(plus);
+		}
+		;
+		if (class1 == plus) {
+			$(this).find('span').removeClass();
+			$(this).find('span').addClass(minus);
+		}
+		;
+	});
+	$("li")
+			.bind(
+					"click",
+					function() {
+						$('#xiangyou').remove();
+						$(this)
+								.append(
+										" <a id=\"xiangyou\" style=\"float: right;\"><span class=\"glyphicon glyphicon-chevron-right\"><\/span><\/a>");
+					});
+	function changeDiv(plus) {
+		$("div.panel-head").find('span').each(function() {
+			$(this).removeClass();
+			$(this).addClass(plus);
+		});
+	}
+	$(function() {
+		var url = "<%=path%>/cardcontroller/gotoupdatemembercard";
+		openurl(url);
+	});
+	
+	function openurl(url) {
+		$("#rightFrame").attr('src', url);
+		//document.getElementById("rightFrame").src = url;
+	}
+</script>
+</html>

@@ -1,0 +1,38 @@
+<%@page pageEncoding="UTF-8"%>
+var widthx=1366;
+	var clientWidth=document.body.clientWidth;//	网页可见区域宽
+	var clientHeight=document.body.clientHeight;//网页可见区域高： 
+	var offsetWidth=document.body.offsetWidth;// (包括边线的宽)网页可见区域宽：
+	var offsetHeight=document.body.offsetHeight;// (包括边线的高)网页可见区域高： 
+	var scrollWidth= document.body.scrollWidth;//网页正文全文宽：
+	var scrollHeight= document.body.scrollHeight;//网页正文全文高：
+	var scrollTop= document.body.scrollTop;//网页被卷去的高：
+	var scrollLeft= document.body.scrollLeft;//网页被卷去的左：
+	var screenTop=window.screenTop;//网页正文部分上： 
+	var screenLeft= window.screenLeft;//网页正文部分左：
+	var height= window.screen.height;//屏幕分辨率的高：
+	var width= window.screen.width;//屏幕分辨率的宽：
+	var availHeight= window.screen.availHeight;//屏幕可用工作区高度：
+	var availWidth= window.screen.availWidth;//屏幕可用工作区宽度：
+	var x=widthx/width;
+	var y=x;
+	x=x*100;
+	x=x+"%";
+	$(function(){
+		console.log(x);
+			  $("body").css("font-size",x);
+	});
+//	console.log("1网页可见区域宽:"+clientWidth);
+//	console.log("2网页可见区域高："+clientHeight);
+//	console.log("3(包括边线的宽)网页可见区域宽"+offsetWidth);
+//	console.log("4(包括边线的高)网页可见区域高："+offsetHeight);
+//	console.log("5网页正文全文宽："+scrollWidth);
+//	console.log("6网页正文全文高："+scrollHeight);
+//	console.log("7网页被卷去的高："+scrollTop);
+//	console.log("8网页被卷去的左："+scrollLeft);
+//	console.log("9网页正文部分上："+screenTop);
+//	console.log("10网页正文部分左："+screenLeft);
+//	console.log("11屏幕分辨率的高："+height);
+//	console.log("12屏幕分辨率的宽："+width);
+//	console.log("13屏幕可用工作区高度："+availHeight);
+//	console.log("14屏幕可用工作区宽度："+availWidth);
