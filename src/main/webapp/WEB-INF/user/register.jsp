@@ -10,7 +10,7 @@
 	content="IE=edge,chrome=1 text/html; charset=UTF-8">
 <meta name="viewport"
 	content="width=device-width,initial-scale=1.0,user-scalable=no">
-<title>注册</title>
+<title>register</title>
 <%@ include file="/htm/jsAndCss.htm"%>
 </head>
 <body>

@@ -42,11 +42,11 @@ public class MainController {
 	}
 	@RequestMapping("/gotopaint")
 	private String gotopaint() {
-		return "paint";
+		return "paint/paint";
 	}
 	@RequestMapping("/gotoregister")
 	private String gotoregister() {
-		return "register";
+		return "user/register";
 	}
 	@ResponseBody
 	@RequestMapping(value="/getlastpaint", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
