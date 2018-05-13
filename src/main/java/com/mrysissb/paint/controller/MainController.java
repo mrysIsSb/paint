@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mrysissb.paint.dao.impl.PaintContentDaoImpl;
 import com.mrysissb.paint.memory.OsBrowserMemory;
@@ -38,7 +39,7 @@ public class MainController {
 	 */
 	@RequestMapping("/home")
 	private String home() {
-		return "home";
+		return "paint/showPaint";
 	}
 	@RequestMapping("/gotopaint")
 	private String gotopaint() {
@@ -47,6 +48,14 @@ public class MainController {
 	@RequestMapping("/gotoregister")
 	private String gotoregister() {
 		return "user/register";
+	}
+	@RequestMapping("/gotoshowpaint")
+	private String gotoshowpaint() {
+		return "paint/showpaint";
+	}
+	@RequestMapping("/getandgotoshowlastpaint")
+	private ModelAndView getandgotoshowlastpaint() {
+		return new ModelAndView("paint/showpaint");
 	}
 	@ResponseBody
 	@RequestMapping(value="/getlastpaint", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
